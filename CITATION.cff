@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use or review this repository, please cite it as below."
+title: "Computer-assisted proof candidates for Reinhardt's maximum-perimeter small polygons at n=16, 32, and 64"
+type: software
+authors:
+  - family-names: Guo
+    given-names: Jizhou
+    orcid: "https://orcid.org/0009-0001-0699-9164"
+version: 0.1.0
+date-released: 2026-08-05
+license: MIT
+keywords:
+  - Reinhardt polygon
+  - discrete geometry
+  - computer-assisted proof
+  - exhaustive search
+  - interval arithmetic

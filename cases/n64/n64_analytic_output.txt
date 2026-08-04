@@ -1,0 +1,10 @@
+{
+  "pi_width": 6.048113026570922e-44,
+  "H_left_lower": 5.678338246024814e-28,
+  "H_right_upper": -6.008567465510503e-28,
+  "deficit_upper": 2.835601662536424e-23,
+  "epsilon": 2.84e-23,
+  "R0": 7.11e-11,
+  "S_screen": 1.7e-08
+}
+ALL ANALYTIC ASSERTIONS PASSED

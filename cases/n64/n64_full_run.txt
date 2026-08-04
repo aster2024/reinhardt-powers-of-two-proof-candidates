@@ -1,0 +1,50 @@
+{
+  "pi_width": 6.048113026570922e-44,
+  "H_left_lower": 5.678338246024814e-28,
+  "H_right_upper": -6.008567465510503e-28,
+  "deficit_upper": 2.835601662536424e-23,
+  "epsilon": 2.84e-23,
+  "R0": 7.11e-11,
+  "S_screen": 1.7e-08
+}
+ALL ANALYTIC ASSERTIONS PASSED
+fixed survivors 896
+{
+  "pi_width": 6.048113026570922e-44,
+  "H_left_lower": 5.678338246024814e-28,
+  "H_right_upper": -6.008567465510503e-28,
+  "deficit_upper": 2.835601662536424e-23,
+  "epsilon": 2.84e-23,
+  "R0": 7.11e-11,
+  "S_screen": 1.7e-08
+}
+ALL ANALYTIC ASSERTIONS PASSED
+{
+  "survivors": 896,
+  "orbits": 6,
+  "orbit_sizes": [
+    128,
+    128,
+    128,
+    128,
+    128,
+    256
+  ],
+  "sigma_sq_uppers": [
+    33.06410329280354,
+    32.483239979662855,
+    33.38564113678266,
+    33.24427138747848,
+    32.62460490393217,
+    32.454722805589114
+  ],
+  "nonbest_deficit_margins": [
+    8.502510694830664e-24,
+    1.19190973782097e-23,
+    3.3217300093657856e-23,
+    6.279480417116577e-23,
+    7.742372595401502e-23
+  ],
+  "uniqueness_margin": 2.2220346582322223e-05
+}
+ALL POST-SCREEN ASSERTIONS PASSED

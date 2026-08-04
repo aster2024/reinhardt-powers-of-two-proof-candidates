@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.o
+cases/n64/n64_code_fixed
+.DS_Store

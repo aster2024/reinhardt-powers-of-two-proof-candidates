@@ -1,0 +1,25 @@
+{
+  "pi_width": "6.048113026570922e-44",
+  "feasible_H_left_lower": "5.533877795940723e-17",
+  "feasible_H_right_upper": "-7.848700024145119e-17",
+  "feasible_deficit_upper": "1.336299789852041e-13",
+  "high_perimeter_radius_R0": "3.47e-06",
+  "uniform_code_threshold_T0": "3.41e-05",
+  "MITM_pair_tests": 192819,
+  "normalized_codes_covered": 2147483648,
+  "survivors": 96,
+  "orbits": 3,
+  "orbit_representatives": [
+    "++++--+--+-+-+-+++---+-+-+-++-++",
+    "+++-+-+-++--+--+--++-+-+-+++--++",
+    "++-++-+-+-+-+--++--+-+-+-+-++-++"
+  ],
+  "sigma_squared_upper_bounds": [
+    "16.364240185641318",
+    "16.453073104971722",
+    "16.254761978612073"
+  ],
+  "uniqueness_margin": "8.779908024739584e-05",
+  "elapsed_seconds": 0.2220172882080078
+}
+ALL ASSERTIONS PASSED
