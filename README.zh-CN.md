@@ -8,7 +8,7 @@ n=16,\quad n=32,\quad n=64
 
 三个二次幂情形中的证明候选、可执行验证程序和交叉复算材料。
 
-> **状态（2026 年 8 月 5 日）：**这些仍是证明候选，不是已经经过同行评审确认的定理。证明开发过程重度依赖 **OpenAI GPT-5.6-Sol**；它在 Jizhou Guo 的反复提示和反馈下生成了数学论证与验证代码的相当大部分。三套原始证书均已复现，后续 AI 辅助交叉检查目前没有发现具体错误，但仍需要独立的人类专家审查。
+> **状态（2026 年 8 月 7 日）：**这些仍是证明候选，不是已经经过同行评审确认的定理。仓库内的核心证书及独立组织的计算交叉检查均已通过；连接有限证书与全局最优性、唯一性的解析桥梁仍需独立专家审查。
 
 ## 当前结果
 
@@ -19,6 +19,12 @@ n=16,\quad n=32,\quad n=64
 | \(n=64\) | `3.1412772509327728680619914155024682980...` | 通过严格三元 meet-in-the-middle 覆盖全部 \(2^{64}\) 个半编码 | 896 个，六个轨道 |
 
 三份证明候选均声称最优合同类唯一。
+
+归档版本统一使用 Zenodo 概念 DOI
+[10.5281/zenodo.21796494](https://doi.org/10.5281/zenodo.21796494)；
+当前归档快照的版本 DOI 是
+[10.5281/zenodo.21796495](https://doi.org/10.5281/zenodo.21796495)。
+本工作树中的修改晚于该不可变快照；正式发布前应在 Zenodo 新建一个版本。
 
 ## 运行验证程序
 
@@ -36,7 +42,7 @@ make verify-fast
 make verify-all
 ```
 
-核心证书使用严格的有理数/整数区间判定。`audits/` 中的程序属于不同实现和高精度交叉复算。
+核心证书使用严格的有理数/整数区间判定。对 \(n=64\)，核心解析验证器同时验证 C++ 中全部 64 个定点权重和两个 Jensen 端点界，后处理残差采用保守的 256 整数单位余量。`audits/` 中的程序属于不同实现和高精度交叉复算。
 
 ## 文件结构
 
@@ -53,17 +59,14 @@ scripts/    一键复现脚本
 
 ## AI 使用与人类贡献
 
-这项工作并非只是用 AI 润色。证明开发重度依赖 GPT-5.6-Sol。Jizhou Guo 主要负责选择问题、提供 prompt 与资料、反复引导、整理生成材料并发起后续审计；不声称独立推导了每一个证明步骤或亲手编写了每一行代码。后续复核还使用了 Claude 和 GPT-5.6 Thinking，但这些仍不等于独立人类同行评审。完整说明见 [docs/AUTHORSHIP_AND_AI_DISCLOSURE.md](docs/AUTHORSHIP_AND_AI_DISCLOSURE.md)。
+生成式 AI 工具在证明探索、搜索与验证程序实现、计算交叉检查和文稿准备中提供了实质性帮助。人类作者主导研究、评估所得材料，并对公开的论断和材料承担责任；AI 辅助检查不视为独立同行评审。完整说明见 [docs/AUTHORSHIP_AND_AI_DISCLOSURE.md](docs/AUTHORSHIP_AND_AI_DISCLOSURE.md)。
 
-## 维护者
+## 作者与维护者
 
-**Jizhou Guo**
+- **Jizhou Guo** — [ORCID](https://orcid.org/0009-0001-0699-9164)、[Google Scholar](https://scholar.google.com/citations?user=fcBDdsYAAAAJ)、[DBLP](https://dblp.org/pid/378/4049.html)、[个人主页](https://aster2024.github.io/)、[X / Twitter](https://twitter.com/TheOsmanthus)
+- **Yitao Luo** — [luoyt.kd@mail.ustc.edu.cn](mailto:luoyt.kd@mail.ustc.edu.cn)
 
-- [ORCID](https://orcid.org/0009-0001-0699-9164)
-- [Google Scholar](https://scholar.google.com/citations?user=fcBDdsYAAAAJ)
-- [DBLP](https://dblp.org/pid/378/4049.html)
-- [个人主页](https://aster2024.github.io/)
-- [X / Twitter](https://twitter.com/TheOsmanthus)
+仓库由 Jizhou Guo 维护。
 
 ## 许可证
 

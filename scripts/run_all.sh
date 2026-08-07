@@ -9,8 +9,8 @@ trap 'rm -rf "$TMP"' EXIT
 printf '\n== n=64 exhaustive C++ scan ==\n'
 (
   cd "$ROOT/cases/n64"
-  g++ -O3 -std=c++17 n64_code_fixed.cpp -o n64_code_fixed
-  MALLOC_ARENA_MAX=1 MALLOC_TRIM_THRESHOLD_=0 ./n64_code_fixed \
+  g++ -O3 -std=c++17 n64_code_fixed.cpp -o "$TMP/n64_code_fixed"
+  MALLOC_ARENA_MAX=1 MALLOC_TRIM_THRESHOLD_=0 "$TMP/n64_code_fixed" \
     >"$TMP/n64_scan.stdout" 2>"$TMP/n64_scan.stderr"
 )
 cat "$TMP/n64_scan.stderr"

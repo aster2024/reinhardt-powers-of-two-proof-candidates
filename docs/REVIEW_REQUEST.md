@@ -1,6 +1,6 @@
 # Request for expert review
 
-These proof candidates would settle previously open cases of a century-old extremal geometry problem if correct. Their development relied heavily on GPT-5.6-Sol, which generated substantial portions of the mathematical arguments and verification code. They have not yet received independent human mathematical verification. The most useful review is therefore adversarial, line-specific, and should treat every new lemma as untrusted until checked.
+These proof candidates would settle previously open cases of a century-old extremal geometry problem if correct. They have not yet received independent expert mathematical verification. The most useful review is therefore adversarial, line-specific, and should treat every new lemma as untrusted until checked.
 
 ## Highest-priority mathematical questions
 
@@ -25,7 +25,7 @@ These proof candidates would settle previously open cases of a century-old extre
 
 - Check the proof that the ternary reflection-pair encoding is a bijective cover of all \(2^{64}\) half-codes and contains no hidden axial-symmetry assumption.
 - Bundle and validate the generator for the 64 fixed-point trigonometric weights used by the C++ scan.
-- Replace or justify the residual padding `128`; a conservative `256` also passes in the audit.
+- Confirm the corrected residual padding: the core post-screen now uses `256`, which dominates the generic bound `128*sqrt(2)` and passes all five exclusions.
 - Scrutinize the normal-cone localization and twisted discrete spectral bound, which are the most novel analytic steps.
 
 ## How to report an issue

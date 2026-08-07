@@ -51,7 +51,7 @@ def gap_deficit(alpha):
 g45=gap_deficit(Q(45,1000)); g54=gap_deficit(Q(54,1000))
 assert g45[0]>A.EPS and g54[0]>A.EPS
 
-# Certify all C++ fixed-point weights, omitted from the bundled verifier.
+# Recheck all C++ fixed-point weights through the separately organized audit path.
 text=(CASE / 'n64_code_fixed.cpp').read_text(); arrays={}
 for name in ('X','Y'):
     m=re.search(rf'const int64_t {name}\[32\]=\{{([^}}]+)\}};',text)

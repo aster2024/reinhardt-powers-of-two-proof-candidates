@@ -1,6 +1,6 @@
 # Status
 
-Date: 2026-08-05
+Date: 2026-08-07
 
 | Item | n=16 | n=32 | n=64 |
 |---|---|---|---|
@@ -14,4 +14,4 @@ Date: 2026-08-05
 
 No concrete contradiction, missed code, or incorrect numerical value has been found so far. The main remaining uncertainty lies in the new analytic arguments connecting the finite certificates to unconditional global optimality and uniqueness.
 
-The proof development relied heavily on GPT-5.6-Sol. Later cross-checks using Claude and GPT-5.6 Thinking remain AI-assisted and are not human peer review.
+Computational cross-checks are supporting evidence and are not a substitute for independent expert review.

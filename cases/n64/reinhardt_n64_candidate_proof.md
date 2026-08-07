@@ -377,7 +377,7 @@ half-codes, not a symmetry restriction.
 
 ## 7. Exact exhaustive code certificate
 
-At scale `M=10^16`, the generator proves that each of the 32 horizontal and 32
+At scale `M=10^16`, the core analytic verifier proves that each of the 32 horizontal and 32
 vertical weights in (6.1) lies within `1/M` of the integer printed in
 `n64_code_fixed.cpp`.  Split each ternary sum into two blocks of 16 terms.
 Each block has only
@@ -411,8 +411,9 @@ They form exactly six full-dihedral orbits, with orbit sizes
 Five orbits contain reflection-symmetric representatives; the last orbit is
 generic.  The winning published axial code is the first orbit.
 
-This full scan takes about 18 seconds and 1.47 GB in the present environment.
-It replaces an infeasible direct scan of `2^63` normalized codes.
+The recorded packaging run took 20.43 seconds and 1.47 GB; runtime is
+environment dependent and is not a proof assertion.  The decomposition
+replaces an infeasible direct scan of `2^63` normalized codes.
 
 ## 8. Exact elimination of the five nonwinning orbits
 
@@ -449,7 +450,9 @@ are respectively
  \quad\text{times }10^{-10}.                                   \tag{8.4}
 \]
 
-If one of these codes had deficit at most `epsilon`, equations (4.4), (5.2),
+For these residual comparisons the core post-verifier uses a 256-unit
+fixed-point padding, larger than the generic Euclidean rounding bound
+`128*sqrt(2)`.  If one of these codes had deficit at most `epsilon`, equations (4.4), (5.2),
 (8.3) would imply
 
 \[

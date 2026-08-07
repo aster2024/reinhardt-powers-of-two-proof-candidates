@@ -8,6 +8,10 @@ The following checks were executed in the packaging environment:
 - n=64 analytic certificate: passed;
 - n=64 C++ exhaustive scan: passed, 896 survivors;
 - n=64 original SHA-256 manifest: passed;
+- n=64 core analytic verifier: all 64 fixed-point weights, the exact
+  `U_64-U_63` comparison, and both Jensen localization endpoints passed;
+- n=64 post-screen: all five nonwinning exclusions passed with 256-unit
+  residual padding;
 - n=64 post-screen certificate: passed, six orbits and all exclusion/uniqueness assertions passed.
 
 The standalone n=64 scan used approximately 1.47 GB peak resident memory and completed in about 22 seconds on the packaging host. Runtime is machine-dependent and is not a proof assertion.

@@ -2,9 +2,12 @@
 from fractions import Fraction as Q
 from collections import defaultdict
 import json
+from pathlib import Path
 # Reuse rigorously generated intervals/constants. Import prints its report by design.
 import n64_analytic_verifier as A
 N=64; M=10**16; R0=A.R0; EPS=A.EPS; A_GAP=A.A_GAP; B_GAP=A.B_GAP
+HERE=Path(__file__).resolve().parent
+RESIDUAL_PADDING=256
 REPS=(
 '++++++--++++++-----+--+-+++--+---+--+++---++-+++-++---+-++-+++++',
 '++++--++-++--+---+--+-+-+-+-+-+-++-+++-++--+--++----++-++--++-++',
@@ -28,7 +31,7 @@ def canon(code):
             out.append(h)
     return min(out)
 
-survivors=[z.strip() for z in open('n64_fixed_survivors.txt') if z.strip()]
+survivors=[z.strip() for z in (HERE/'n64_fixed_survivors.txt').read_text().splitlines() if z.strip()]
 assert len(survivors)==896 and len(set(survivors))==896
 g=defaultdict(list)
 for z in survivors:g[canon(z)].append(z)
@@ -58,7 +61,8 @@ def residual_int(code):
     c=signs(code)
     return sum(c[j]*EDGE_INT[j][0] for j in range(N)),sum(c[j]*EDGE_INT[j][1] for j in range(N))
 def prove_residual_gt(code,q):
-    x,y=residual_int(code); t=ceil_q(M*q)+2*N
+    # Coordinate errors are <=2N, hence Euclidean error <2N*sqrt(2)<256.
+    x,y=residual_int(code); t=ceil_q(M*q)+RESIDUAL_PADDING
     return x*x+y*y>t*t
 
 def sigma_sq_upper(code):
@@ -106,6 +110,7 @@ assert M0>2*Y0
 
 print(json.dumps({
  'survivors':len(survivors),'orbits':len(g),'orbit_sizes':sorted(len(v) for v in g.values()),
+ 'residual_padding':RESIDUAL_PADDING,
  'sigma_sq_uppers':[float(x) for x in sigmas],
  'nonbest_deficit_margins':[float(K0*((BLOW[i]-rem)/6)**2-EPS) for i in range(1,6)],
  'uniqueness_margin':float(M0-2*Y0)

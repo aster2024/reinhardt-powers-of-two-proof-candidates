@@ -3,6 +3,16 @@
   "H_left_lower": 5.678338246024814e-28,
   "H_right_upper": -6.008567465510503e-28,
   "deficit_upper": 2.835601662536424e-23,
+  "U64_minus_U63_lower": 1.0091935590582589e-05,
+  "width_deficit_boundary_lowers": [
+    3.1091090367661546e-06,
+    4.3407310552670495e-06
+  ],
+  "gap_deficit_boundary_lowers": [
+    1.0128409839001532e-07,
+    1.553556572225418e-07
+  ],
+  "fixed_weights_certified": 64,
   "epsilon": 2.84e-23,
   "R0": 7.11e-11,
   "S_screen": 1.7e-08

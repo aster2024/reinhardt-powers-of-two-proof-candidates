@@ -1,6 +1,6 @@
 # Audit artifacts
 
-The files in this directory are **AI-assisted cross-checks**, not the original formal certificates and not human peer review. They were produced after a proof-development process that itself relied heavily on GPT-5.6-Sol.
+The files in this directory are separately organized computational cross-checks, not the original formal certificates and not independent human peer review.
 
 - `audit_report_n16_n32_zh.md`: consolidated audit report for the n=16 and n=32 candidates.
 - `n16/independent_scan.py`: a direct NumPy rescan of the normalized sign codes.

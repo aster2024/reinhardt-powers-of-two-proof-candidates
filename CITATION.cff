@@ -6,8 +6,15 @@ authors:
   - family-names: Guo
     given-names: Jizhou
     orcid: "https://orcid.org/0009-0001-0699-9164"
+    email: "mitsuha2021b@gmail.com"
+    affiliation: "Dots Studio, RedNote"
+  - family-names: Luo
+    given-names: Yitao
+    email: "luoyt.kd@mail.ustc.edu.cn"
 version: 0.1.0
 date-released: 2026-08-05
+repository-code: "https://github.com/aster2024/reinhardt-powers-of-two-proof-candidates"
+url: "https://doi.org/10.5281/zenodo.21796494"
 license: MIT
 keywords:
   - Reinhardt polygon

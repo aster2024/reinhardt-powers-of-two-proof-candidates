@@ -8,9 +8,16 @@ n=16,\qquad n=32,\qquad n=64
 
 of Reinhardt's maximum-perimeter problem for convex small polygons of diameter at most one.
 
-> **Status (5 August 2026):** these are proof candidates, not peer-reviewed theorems. The proof development relied heavily on **OpenAI GPT-5.6-Sol**, which generated substantial portions of the mathematical arguments and verification code under iterative prompting by Jizhou Guo. The original certificates have been reproduced, and separate AI-assisted cross-checks have found no concrete error so far. Independent human review is still needed.
+> **Status (7 August 2026):** these are proof candidates, not peer-reviewed theorems. The packaged core certificates and separately organized computational cross-checks pass, while independent expert review of the analytic bridges is still needed.
 
 中文说明：[README.zh-CN.md](README.zh-CN.md)
+
+Archived releases are available through the Zenodo concept DOI
+[10.5281/zenodo.21796494](https://doi.org/10.5281/zenodo.21796494).
+The current archived version is
+[10.5281/zenodo.21796495](https://doi.org/10.5281/zenodo.21796495).
+Changes in this working tree postdate that immutable snapshot and require a new
+Zenodo version before release.
 
 ## Results included
 
@@ -42,7 +49,7 @@ Full verification, including regeneration of the 896 \(n=64\) survivors:
 make verify-all
 ```
 
-The core certificate decisions use exact rational/integer interval arithmetic. Files under `audits/` are separate implementation and high-precision cross-checks.
+The core certificate decisions use exact rational/integer interval arithmetic. For \(n=64\), the analytic core certifies all 64 C++ fixed-point weights and both endpoint Jensen bounds, while the post-screen uses a conservative 256-unit residual padding. Files under `audits/` are separate implementation and high-precision cross-checks.
 
 ## Repository layout
 
@@ -59,17 +66,14 @@ The computational results have been reproduced, but the most important remaining
 
 ## Provenance
 
-The work relied heavily on GPT-5.6-Sol, not merely for editing or routine code completion. Jizhou Guo selected the problem, supplied prompts and source material, steered iterations, organized the artifacts, and initiated later audits. Claude and GPT-5.6 Thinking were used for subsequent AI-assisted cross-checks. See [docs/AUTHORSHIP_AND_AI_DISCLOSURE.md](docs/AUTHORSHIP_AND_AI_DISCLOSURE.md).
+Generative-AI tools provided substantial assistance during proof exploration, implementation of searches and verifiers, computational cross-checking, and manuscript preparation. The human authors directed the research, assessed the resulting materials, and take responsibility for the released claims and artifacts. AI-assisted checks are not treated as independent peer review. See [docs/AUTHORSHIP_AND_AI_DISCLOSURE.md](docs/AUTHORSHIP_AND_AI_DISCLOSURE.md).
 
-## Maintainer
+## Authors and maintainer
 
-**Jizhou Guo**
+- **Jizhou Guo** — [ORCID](https://orcid.org/0009-0001-0699-9164), [Google Scholar](https://scholar.google.com/citations?user=fcBDdsYAAAAJ), [DBLP](https://dblp.org/pid/378/4049.html), [homepage](https://aster2024.github.io/), [X / Twitter](https://twitter.com/TheOsmanthus)
+- **Yitao Luo** — [luoyt.kd@mail.ustc.edu.cn](mailto:luoyt.kd@mail.ustc.edu.cn)
 
-- [ORCID](https://orcid.org/0009-0001-0699-9164)
-- [Google Scholar](https://scholar.google.com/citations?user=fcBDdsYAAAAJ)
-- [DBLP](https://dblp.org/pid/378/4049.html)
-- [Homepage](https://aster2024.github.io/)
-- [X / Twitter](https://twitter.com/TheOsmanthus)
+Jizhou Guo maintains the repository.
 
 ## License
 

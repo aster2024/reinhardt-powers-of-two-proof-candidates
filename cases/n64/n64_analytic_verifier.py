@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from fractions import Fraction as Q
 import json
+from pathlib import Path
+import re
 N=64
 EPS=Q(284,10**25) # 2.84e-23
 CODE='-++++++-----+--+-+++--+---+--+++---++-+++-++---+-++-+++++------+'
@@ -74,11 +76,50 @@ U=scale_iv(Q(2*N),sin_interval(PI_L/Q(2*N),PI_U/Q(2*N)))
 DEF=sub_iv(U,P)
 assert DEF[1]<EPS
 
+# Exact endpoint checks used by the geometric localization argument.
+U63=scale_iv(Q(126),sin_interval(PI_L/Q(126),PI_U/Q(126)))
+U64_MINUS_U63=sub_iv(U,U63)
+assert U64_MINUS_U63[0]>Q(3,2*N**3)
+
+def width_deficit(which):
+    t_half=(Q(which,4*N)*PI_L,Q(which,4*N)*PI_U)
+    coef=(Q(1)-Q(which,4*N))/Q(127)
+    avg_half=(coef*PI_L,coef*PI_U)
+    ans=scale_iv(Q(2),U)
+    ans=sub_iv(ans,scale_iv(Q(2),sin_interval(*t_half)))
+    return sub_iv(ans,scale_iv(Q(2*127),sin_interval(*avg_half)))
+WIDTH_DEFICITS=(width_deficit(1),width_deficit(3))
+WIDTH_COARSE=Q(9,N**2*(2*N)*16)
+assert all(iv[0]>WIDTH_COARSE for iv in WIDTH_DEFICITS)
+
+def gap_deficit(alpha):
+    first=scale_iv(Q(2),sin_interval(alpha/2,alpha/2))
+    lo=(PI_L-alpha)/(2*(N-1)); hi=(PI_U-alpha)/(2*(N-1))
+    rest=scale_iv(Q(2*(N-1)),sin_interval(lo,hi))
+    return sub_iv(sub_iv(U,first),rest)
+GAP_DEFICITS=(gap_deficit(A_GAP),gap_deficit(B_GAP))
+assert all(iv[0]>EPS for iv in GAP_DEFICITS)
+
+# Certify every fixed-point weight embedded in the exhaustive C++ scan.
+cpp=(Path(__file__).resolve().parent/'n64_code_fixed.cpp').read_text()
+fixed={}
+for name in ('X','Y'):
+    match=re.search(rf'const int64_t {name}\[32\]=\{{([^}}]+)\}};',cpp)
+    assert match is not None
+    fixed[name]=[int(x) for x in match.group(1).split(',')]
+    assert len(fixed[name])==32
+for j in range(32):
+    x=scale_iv(Q(2),sin_interval(Q(2*j+1,128)*PI_L,Q(2*j+1,128)*PI_U))
+    y=scale_iv(Q(2),sin_interval(Q(63-2*j,128)*PI_L,Q(63-2*j,128)*PI_U))
+    xi,yi=fixed['X'][j],fixed['Y'][j]
+    assert x[0]>=Q(xi-1,10**16) and x[1]<=Q(xi+1,10**16)
+    assert y[0]>=Q(yi-1,10**16) and y[1]<=Q(yi+1,10**16)
+
 # Analytic constants for localization and uniform code screen.
 def sin_lower(x):return x-x**3/Q(6)
 K0=sin_lower(A_GAP/2)/4
 assert K0*R0*R0>EPS
-# Dirichlet Poincare constant <= 512: sin(pi/128)>1/64.
+# Dirichlet Poincare constant <512 follows from 2*sin(pi/128)>0.049 below.
 # Twisted linear coefficient sqrt(128)cos(pi/128)<12.
 assert Q(23,2)*R0+512*R0*R0 < Q(82,10**11) # b threshold 8.2e-10
 # Divide by |xi-1|=2sin(pi/128)>0.049.
@@ -100,6 +141,10 @@ report={
  'H_left_lower': float(HL[0]),
  'H_right_upper': float(HU[1]),
  'deficit_upper': float(DEF[1]),
+ 'U64_minus_U63_lower':float(U64_MINUS_U63[0]),
+ 'width_deficit_boundary_lowers':[float(iv[0]) for iv in WIDTH_DEFICITS],
+ 'gap_deficit_boundary_lowers':[float(iv[0]) for iv in GAP_DEFICITS],
+ 'fixed_weights_certified':64,
  'epsilon':float(EPS),
  'R0':float(R0),
  'S_screen':float(T_S),
